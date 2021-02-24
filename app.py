@@ -1,4 +1,4 @@
-from flask import jsonify, Flask
+from flask import jsonify, Flask, request
 import sqlite3
 from flask_cors import CORS
 
@@ -11,7 +11,7 @@ def dict_factory(cursor, row):
         d[col[0]]=row[idx]
     return d
 
-@app.route('/' , methods=['GET'])
+@app.route('/manga-content/' , methods=['GET'])
 def show_data():
     try:
         with sqlite3.connect('database.db') as con:
@@ -20,9 +20,20 @@ def show_data():
             cursor.execute('SELECT * FROM manga')
             data = cursor.fetchall()
             return jsonify(data)
-    except:
-        pass
+    except Exception as e:
+        print(e)
 
+@app.route('/users/ ', methods=['POST'])
+def newuser():
+    if request.method == 'POST':
+        try:
+            username = request.form['username']
+            password = request.form['pssword']
+            name = request.form['name']
+            surname = request.form['surname']
+            email = request.form['email']
+        except Exception as e:
+            print(e)
 if __name__ == '__main__':
     app.run(debug=True)
     
