@@ -11,7 +11,7 @@ def dict_factory(cursor, row):
         d[col[0]]=row[idx]
     return d
 
-@app.route('/')
+@app.route('/' , methods=['GET'])
 def show_data():
     try:
         with sqlite3.connect('database.db') as con:
@@ -19,8 +19,6 @@ def show_data():
             cursor = con.cursor()
             cursor.execute('SELECT * FROM manga')
             data = cursor.fetchall()
-            print(data)
-            print(jsonify(data))
             return jsonify(data)
     except:
         pass
