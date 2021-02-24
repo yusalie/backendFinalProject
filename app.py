@@ -20,8 +20,8 @@ def show_data():
             cursor.execute('SELECT * FROM manga')
             data = cursor.fetchall()
             return jsonify(data)
-    except Exception as e:
-        print(e)
+    except:
+        pass
 
 @app.route('/users/ ', methods=['POST'])
 def newuser():
@@ -32,8 +32,8 @@ def newuser():
             name = request.form['name']
             surname = request.form['surname']
             email = request.form['email']
-        except Exception as e:
-            print(e)
+        except:
+            pass
 if __name__ == '__main__':
     app.run(debug=True)
     
