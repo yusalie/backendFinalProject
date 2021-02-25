@@ -1,5 +1,6 @@
 altgraph==0.17
 appdirs==1.4.4
+apturl==0.5.2
 argon2-cffi==20.1.0
 async-generator==1.10
 attrs==20.3.0
@@ -8,15 +9,19 @@ bcrypt==3.1.7
 bleach==3.2.1
 blinker==1.4
 branca==0.4.1
+Brlapi==0.7.0
 certifi==2019.11.28
 cffi==1.14.3
 chardet==3.0.4
 Click==7.0
 colorama==0.4.3
+command-not-found==0.3
 cryptography==2.8
+cupshelpers==1.0
 cycler==0.10.0
 dbus-python==1.2.16
 decorator==4.4.2
+defer==1.0.6
 defusedxml==0.6.0
 distlib==0.3.1
 distro==1.4.0
