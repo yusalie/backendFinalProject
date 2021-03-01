@@ -23,20 +23,28 @@ def show_data():
     except:
         pass
 
-@app.route('/users/ ', methods=['POST', 'PUT', 'DELETE'])
+@app.route('/register_users/ ', methods=['POST', 'PUT', 'DELETE'])
 def newuser():
     if request.method == 'POST':
         try:
             post_data = request.get_json()
-            
+
             username = post_data['username']
             password = post_data['pssword']
             name = post_data['name']
             surname = post_data['surname']
+            address = post_data['addrss']
             email = post_data['email']
+            
+            with sqlite3.connect('database.db') as conn:
+                conn.row_factory = dict_factory()
+                
+                curr = conn.cursor()
+                curr.execute("INSERT INTO customers(username, pssword, name, surname, addrss, email)")
+                conn.commit()
         except:
             pass
-        
+
 if __name__ == '__main__':
     app.run(debug=True)
     
