@@ -2,15 +2,14 @@ from flask import jsonify, Flask, request
 import sqlite3
 from flask_cors import CORS
 
-app = Flask(__name__)
-CORS(app)
-
 def dict_factory(cursor, row):
     d={}
     for idx, col in enumerate(cursor.description):
         d[col[0]]=row[idx]
     return d
 
+app = Flask(__name__)
+CORS(app)
 @app.route('/manga-content/' , methods=['GET'])
 def show_data():
     try:
