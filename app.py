@@ -23,17 +23,20 @@ def show_data():
     except:
         pass
 
-@app.route('/users/ ', methods=['POST'])
+@app.route('/users/ ', methods=['POST', 'PUT', 'DELETE'])
 def newuser():
     if request.method == 'POST':
         try:
-            username = request.form['username']
-            password = request.form['pssword']
-            name = request.form['name']
-            surname = request.form['surname']
-            email = request.form['email']
+            post_data = request.get_json()
+            
+            username = post_data['username']
+            password = post_data['pssword']
+            name = post_data['name']
+            surname = post_data['surname']
+            email = post_data['email']
         except:
             pass
+        
 if __name__ == '__main__':
     app.run(debug=True)
     
