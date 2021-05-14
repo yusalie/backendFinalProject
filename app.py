@@ -93,10 +93,6 @@ def show_users():
         print(e)
 
 
-# @app.route('/test/')
-# def test():
-#     return render_template('login_test_file.html/')
-
 @app.route('/login/', methods=['GET'])
 def login():
     if request.method == 'GET':
